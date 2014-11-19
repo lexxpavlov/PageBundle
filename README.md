@@ -29,12 +29,10 @@ or manually add link to bundle into your `composer.json` and run `$ php composer
 
 ```json
 {
-...
     "require" : {
-        ...
         "lexxpavlov/pagebundle": "dev-master"
     },
-...
+}
 ```
 
 Composer will install bundle to `vendor/lexxpavlov` directory.
