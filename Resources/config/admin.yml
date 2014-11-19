@@ -1,0 +1,13 @@
+services:
+    sonata.admin.lexxpavlov_page:
+        class: %lexxpavlov_page.admin_class%
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Pages", label_catalogue: "messages" }
+        arguments:
+            - ~
+            - %lexxpavlov_page.entity_class%
+            - ~
+        calls:
+            - [ setTranslationDomain, [messages]]
+            - [ setContentType, [ %lexxpavlov_page.content_type% ] ]
+    
