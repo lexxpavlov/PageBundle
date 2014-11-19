@@ -20,7 +20,7 @@ Download LexxpavlovPageBundle and its dependencies to the vendor directory. The 
 You can use Composer for the automated process:
 
 ```bash
-$ php composer.phar require lexxpavlov/pagebundle
+$ php composer.phar require lexxpavlov/pagebundle:dev-master
 ```
 
 Composer will install bundle to `vendor/lexxpavlov` directory.
