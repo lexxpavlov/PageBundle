@@ -35,7 +35,7 @@ or manually add link to bundle into your `composer.json` and run `$ php composer
 }
 ```
 
-Composer will install bundle to `vendor/lexxpavlov` directory.
+Composer will install bundle to `vendor/lexxpavlov` directory. Bundle StofDoctrineExtensionsBundle will be install automatically, if it didn't install earlier.
 
 ### Adding bundle to your application kernel
 

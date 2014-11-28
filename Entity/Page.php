@@ -19,8 +19,8 @@ class Page
     /**
      * @var string
      *
-     * @Gedmo\Slug(fields={"title"})
-     * @ORM\Column(type="string", length=50, unique=true)
+     * @Gedmo\Slug(fields={"title"}, updatable=false)
+     * @ORM\Column(type="string", length=100, unique=true)
      */
     protected $slug;
 
