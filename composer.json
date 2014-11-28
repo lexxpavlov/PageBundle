@@ -7,7 +7,7 @@
     "license" : "MIT",
     "keywords" : ["page", "page bundle"],
     "authors" : [{
-        "name" : "lexxpavlov",
+        "name" : "Alexey Pavlov",
         "email" : "lexx.pavlov@gmail.com"
     }],
     "minimum-stability": "dev",
@@ -21,14 +21,12 @@
         "behat/transliterator": "May be used for autogenerate slug field"
     },
     "autoload" : {
-        "psr-4" : { "Lexxpavlov\\PageBundle" : "" }
+        "psr-4" : { "Lexxpavlov\\PageBundle\\" : "" }
     },
     "target-dir" : "Lexxpavlov/PageBundle",
-    "repositories" : [{
-    }],
     "extra" : {
-    "branch-alias" : {
-            "dev-master" : "1-dev"
+        "branch-alias" : {
+            "dev-master" : "1.0-dev"
         }
     }
 }
