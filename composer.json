@@ -21,16 +21,14 @@
         "behat/transliterator": "May be used for autogenerate slug field"
     },
     "autoload" : {
-        "psr-0" : {
-            "Lexxpavlov\\PageBundle" : ""
-        }
+        "psr-4" : { "Lexxpavlov\\PageBundle" : "" }
     },
     "target-dir" : "Lexxpavlov/PageBundle",
     "repositories" : [{
     }],
     "extra" : {
     "branch-alias" : {
-            "dev-master" : "1.0.0-dev"
+            "dev-master" : "1-dev"
         }
     }
 }
