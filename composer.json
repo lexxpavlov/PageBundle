@@ -23,10 +23,9 @@
     "autoload" : {
         "psr-4" : { "Lexxpavlov\\PageBundle\\" : "" }
     },
-    "target-dir" : "Lexxpavlov/PageBundle",
     "extra" : {
         "branch-alias" : {
-            "dev-master" : "1.0-dev"
+            "dev-master" : "1.0.x-dev"
         }
     }
 }
