@@ -22,7 +22,7 @@ Download LexxpavlovPageBundle and its dependencies to the vendor directory. The 
 You can use Composer for the automated process:
 
 ```bash
-$ php composer.phar require lexxpavlov/pagebundle:dev-master
+$ php composer.phar require lexxpavlov/pagebundle
 ```
 
 or manually add link to bundle into your `composer.json` and run `$ php composer.phar update`:
@@ -30,7 +30,7 @@ or manually add link to bundle into your `composer.json` and run `$ php composer
 ```json
 {
     "require" : {
-        "lexxpavlov/pagebundle": "dev-master"
+        "lexxpavlov/pagebundle": "~1.0"
     },
 }
 ```
