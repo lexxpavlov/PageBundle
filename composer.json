@@ -1,7 +1,6 @@
 {
     "name" : "lexxpavlov/pagebundle",
     "description" : "Symfony2 Page bundle with meta data, predefined form type and Sonata Admin service",
-    "version" : "1.0.0",
     "type" : "symfony-bundle",
     "homepage": "https://github.com/lexxpavlov/PageBundle",
     "license" : "MIT",
@@ -16,7 +15,7 @@
         "stof/doctrine-extensions-bundle": ">=1.1"
     },
     "suggest": {
-        "egeloen/ckeditor-bundle": "Allow use ckeditor field"
+        "egeloen/ckeditor-bundle": "Allow use CKEditor in the content field"
     },
     "autoload" : {
         "psr-4" : { "Lexxpavlov\\PageBundle\\" : "" }
