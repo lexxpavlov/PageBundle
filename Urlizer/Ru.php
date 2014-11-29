@@ -2,11 +2,13 @@
 
 namespace Lexxpavlov\PageBundle\Urlizer;
 
+use Gedmo\Sluggable\Util\Urlizer;
+
 class Ru
 {
     public static function transliterate($text, $separator = '-')
     {
-        // table of convert letters from Russian language to latin letters
+        // table of convert letters from current language to latin letters
         $convertTable = array(
             'а' => 'a',  'б' => 'b',   'в' => 'v',  'г' => 'g',  'д' => 'd',
             'е' => 'e',  'ё' => 'e',   'ж' => 'zh', 'з' => 'z',  'и' => 'i',
@@ -17,21 +19,7 @@ class Ru
             'э' => 'e',  'ю' => 'yu',  'я' => 'ya'
         );
         $text = strtr(trim(mb_strtolower($text, 'UTF-8')), $convertTable);
-        return self::urlize($text, $separator);
+        return Urlizer::urlize($text, $separator);
     }
     
-    public static function urlize($text, $separator = '-')
-    {
-        // Remove all none word characters
-        $text = preg_replace('/\W/', ' ', $text);
-
-        // More stripping. Replace spaces with dashes
-        $text = preg_replace('/[^A-Za-z0-9\/]+/', $separator,
-                preg_replace('/([a-z\d])([A-Z])/', '\1_\2',
-                preg_replace('/([A-Z]+)([A-Z][a-z])/', '\1_\2',
-                preg_replace('/::/', '/', $text))));
-
-        return trim($text, $separator);
-
-    }
 }
