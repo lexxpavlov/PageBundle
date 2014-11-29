@@ -42,7 +42,7 @@ class PageAdmin extends Admin
                 ->add('metaDescription', null, array('required' => false))
             ->end()
         ;
-        $formMapper->setHelp(array(
+        $formMapper->setHelps(array(
             'slug' => 'Leave blank for automatic filling from title field',
         ));
     }
