@@ -17,7 +17,7 @@ Installation (>=Symfony 2.1)
 
 ### Composer
 
-Download LexxpavlovPageBundle and its dependencies to the vendor directory. The bundle has a [StofDoctrineExtensionsBundle](https://github.com/stof/StofDoctrineExtensionsBundle) as required dependency, [Behat/Transliterator](https://github.com/Behat/Transliterator) and [IvoryCKEditorBundle](https://github.com/egeloen/IvoryCKEditorBundle) as optional dependencies.
+Download LexxpavlovPageBundle and its dependencies to the vendor directory. The bundle has a [StofDoctrineExtensionsBundle](https://github.com/stof/StofDoctrineExtensionsBundle) as required dependency and [IvoryCKEditorBundle](https://github.com/egeloen/IvoryCKEditorBundle) as optional dependency.
 
 You can use Composer for the automated process:
 
@@ -35,7 +35,7 @@ or manually add link to bundle into your `composer.json` and run `$ php composer
 }
 ```
 
-Composer will install bundle to `vendor/lexxpavlov` directory. Bundle StofDoctrineExtensionsBundle will be install automatically, if it didn't install earlier.
+Composer will install bundle to `vendor/lexxpavlov` directory. Bundle StofDoctrineExtensionsBundle will be installed automatically, if it didn't install earlier.
 
 ### Adding bundle to your application kernel
 
@@ -92,7 +92,7 @@ lexxpavlov_page:
     entity_class: App\YourBundle\Entity\Page
 ```
 
-This will activate doctrine Timestampable extention. Also you may activate Sluggable and Blameable extentions (see below). See more about doctrine extentions at [documentation](https://github.com/stof/StofDoctrineExtensionsBundle/blob/master/Resources/doc/index.rst).
+This will activate doctrine Timestampable extension. Also you may activate Sluggable and Blameable extensions (see below). See more about doctrine extensions at [documentation](https://github.com/stof/StofDoctrineExtensionsBundle/blob/master/Resources/doc/index.rst).
 
 Now you need create the table in your database:
 
@@ -112,11 +112,11 @@ If you use SonataAdminBundle, then you are already have admin tool for creating 
 $form = $this->createForm('lexxpavlov_page');
 ```
 
-There is the sample code for showing page, controller class and twig template. 
+There is the sample code for showing page, controller class and twig template. There are 3 different versions of action code, that doing the same - get page from database and show it in the twig template. Choose one or write your code.
 
 Controller:
 ```php
-{# src/App/YourBundle/Controller/PageController.php #}
+{# src/App/YourBundle/Controller/DefaultController.php #}
 
 namespace App\YourBundle\Controller;
 
@@ -211,8 +211,8 @@ Advanced configuration
 ```yaml
 lexxpavlov_page:
     entity_class: App\SiteBundle\Entity\Page
-    admin_class: Lexxpavlov\PageBundle\Admin\PageAdmin # or false to disable sonata admin service
-    content_type: ckeditor # use your form type for content field, e.g. textarea
+    admin_class: Lexxpavlov\PageBundle\Admin\PageAdmin # or false to disable registering of sonata admin service
+    content_type: ckeditor # use your form type for content field, e.g. textarea or ckeditor
 ```
 
 `ckeditor` form type is added by [IvoryCKEditorBundle](https://github.com/egeloen/IvoryCKEditorBundle).
@@ -222,24 +222,26 @@ lexxpavlov_page:
 LexxpavlovPageBundle marks `slug` field as `@Gedmo\Slug`. You need to activate its listener in StofDoctrineExtensionsBundle config:
 
 ```yaml
-
 stof_doctrine_extensions:
     # ...
-    class:
-        sluggable: Lexxpavlov\PageBundle\Listener\BehatSluggableListener
     orm:
         default:
             sluggable: true
             # ...
 ```
 
-BehatSluggableListener use Behat\Transliterator for convert non-latin string (`title` field) to normalized latin string, that may be used as page slug (used in page url).
+StofDoctrineExtensionsBundle has a tool for build slug from any local string to latin-only string (urlizer). Urlizer gets any UTF-8 string, urlizes it and saves to slug field. Unfortunately, this automatic tool produce not perfect result, and you may want to write your own urlizer for your language and point that urlizer for use by Sluggable extension. You may see [extension documentation](https://github.com/Atlantic18/DoctrineExtensions/blob/master/doc/sluggable.md#custom-transliterator) and code of [listener](https://github.com/lexxpavlov/PageBundle/blob/master/Listener/RuSluggableListener.php) and [transliterator](https://github.com/lexxpavlov/PageBundle/blob/master/Urlizer/Ru.php) in this bundle.
 
-You may write own listener for your needs, see [extension documentation](https://github.com/Atlantic18/DoctrineExtensions/blob/master/doc/sluggable.md#custom-transliterator) and code of [listener](https://github.com/lexxpavlov/PageBundle/blob/master/Listener/BehatSluggableListener.php) in this bundle. Listeners are very simple and must link to a static class with `transliterate` method.
+```yaml
+stof_doctrine_extensions:
+    class:
+        sluggable: Lexxpavlov\PageBundle\Listener\RuSluggableListener
+    # ...
+```
 
 ### Append autoupdated user fields
 
-You may add `createdBy` and `updatedBy` fields to your entity and use Blameable doctrine extention. Make next changes to your page entity class:
+You may add `createdBy` and `updatedBy` fields to your entity and use Blameable doctrine extension. Make next changes to your page entity class:
 
 ```php
 <?php
@@ -328,7 +330,7 @@ class Page extends BasePage
 
 ```
 
-And activate Blameable extention in StofDoctrineExtensionsBundle config:
+And activate Blameable extension in StofDoctrineExtensionsBundle config:
 
 ```yaml
 stof_doctrine_extensions:

@@ -67,10 +67,6 @@ class Page
      */
     protected $publishedAt;
 
-    public function __toString() {
-        return $this->title ?: 'n/a';
-    }
-
     /**
      * @var \Datetime
      * @Gedmo\Timestampable(on="create")
@@ -85,6 +81,10 @@ class Page
      */
     protected $updatedAt;
     
+    public function __toString() {
+        return $this->title ?: 'n/a';
+    }
+
     /**
      * Get id
      *

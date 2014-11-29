@@ -12,7 +12,8 @@ class PageAdmin extends Admin
 {
     protected $contentType = 'ckeditor'; // or null for simple textarea field
 
-    public function setContentType($contentType) {
+    public function setContentType($contentType)
+    {
         $this->contentType = $contentType;
     }
     
@@ -22,8 +23,8 @@ class PageAdmin extends Admin
             ->addIdentifier('title')
             ->add('slug')
             ->add('published', null, array('editable' => true))
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('createdAt', 'datetime')
+            ->add('updatedAt', 'datetime')
         ;
     }
 
@@ -34,7 +35,7 @@ class PageAdmin extends Admin
                 ->add('slug', null, array('required' => false))
                 ->add('title')
                 ->add('content', $this->contentType)
-                ->add('published')
+                ->add('published', null, array('required' => false))
             ->end()
             ->with('SEO')
                 ->add('metaKeywords', null, array('required' => false))
@@ -48,6 +49,7 @@ class PageAdmin extends Admin
         $datagridMapper
             ->add('slug')
             ->add('title')
+            ->add('published')
         ;
     }
 
@@ -57,6 +59,10 @@ class PageAdmin extends Admin
             ->add('slug')
             ->add('title')
             ->add('content')
+            ->add('published')
+            ->add('publishedAt', 'datetime')
+            ->add('createdAt', 'datetime')
+            ->add('updatedAt', 'datetime')
             ->add('metaKeywords')
             ->add('metaDescription')
         ;

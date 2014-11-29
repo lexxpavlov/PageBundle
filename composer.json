@@ -17,8 +17,7 @@
         "stof/doctrine-extensions-bundle": ">=1.1"
     },
     "suggest": {
-        "egeloen/ckeditor-bundle": "Allow use ckeditor field",
-        "behat/transliterator": "May be used for autogenerate slug field"
+        "egeloen/ckeditor-bundle": "Allow use ckeditor field"
     },
     "autoload" : {
         "psr-4" : { "Lexxpavlov\\PageBundle\\" : "" }
