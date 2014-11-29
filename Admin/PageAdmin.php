@@ -42,6 +42,9 @@ class PageAdmin extends Admin
                 ->add('metaDescription', null, array('required' => false))
             ->end()
         ;
+        $formMapper->setHelp(array(
+            'slug' => 'Leave blank for automatic filling from title field',
+        ));
     }
 
     public function configureDatagridFilters(DatagridMapper $datagridMapper)
