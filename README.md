@@ -230,8 +230,11 @@ stof_doctrine_extensions:
             # ...
 ```
 
-StofDoctrineExtensionsBundle has a tool for build slug from any local string to latin-only string (urlizer). Urlizer gets any UTF-8 string, urlizes it and saves to slug field. Unfortunately, this automatic tool produce not perfect result, and you may want to write your own urlizer for your language and point that urlizer for use by Sluggable extension. You may see [extension documentation](https://github.com/Atlantic18/DoctrineExtensions/blob/master/doc/sluggable.md#custom-transliterator) and code of [listener](https://github.com/lexxpavlov/PageBundle/blob/master/Listener/RuSluggableListener.php) and [transliterator](https://github.com/lexxpavlov/PageBundle/blob/master/Urlizer/Ru.php) in this bundle.
+StofDoctrineExtensionsBundle has a tool for build slug from any local string to latin-only string (urlizer). Urlizer gets any UTF-8 string, urlizes it and saves to slug field. For automatic filling you must left slug field blank while create or update the page. If slug field isn't blank, than Sluggable doesn't work.
 
+Unfortunately, this automatic tool produce not perfect result, and you may want to write your own urlizer for your language and set up Sluggable extension to use that urlizer. You may see [extension documentation](https://github.com/Atlantic18/DoctrineExtensions/blob/master/doc/sluggable.md#custom-transliterator) and code of [listener](https://github.com/lexxpavlov/PageBundle/blob/master/Listener/RuSluggableListener.php) and [transliterator](https://github.com/lexxpavlov/PageBundle/blob/master/Urlizer/Ru.php) in this bundle.
+
+This bundle has sample urlizer for Russian language:
 ```yaml
 stof_doctrine_extensions:
     class:
@@ -239,7 +242,7 @@ stof_doctrine_extensions:
     # ...
 ```
 
-### Append autoupdated user fields
+### Append autoupdating user fields
 
 You may add `createdBy` and `updatedBy` fields to your entity and use Blameable doctrine extension. Make next changes to your page entity class:
 
