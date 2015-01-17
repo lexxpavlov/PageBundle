@@ -1,6 +1,6 @@
 services:
     lexxpavlov_page.form.type.page:
         class: Lexxpavlov\PageBundle\Form\Type\PageType
-        arguments: [ %lexxpavlov_page.entity_class% ]
+        arguments: [ %lexxpavlov_page.content_type% ]
         tags:
             - { name: form.type, alias: lexxpavlov_page }

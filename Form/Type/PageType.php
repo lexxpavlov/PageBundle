@@ -8,35 +8,30 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PageType extends AbstractType
 {
+    private $contentType;
 
-    private $dataClass;
-
-    /**
-     * @param EntityManager
-     */
-    public function __construct($dataClass)
+    public function __construct($contentType)
     {
-        $this->dataClass = $dataClass;
+        $this->contentType = $contentType;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('slug', 'text')
             ->add('title', 'text')
+            ->add('slug', 'text', array('required' => false))
             ->add('content', $options['contentType'])
-            ->add('published', 'checkbox')
-            ->add('metaKeywords', 'textarea')
-            ->add('metaDescription', 'textarea')
+            ->add('published', 'checkbox', array('required' => false))
+            ->add('metaKeywords', 'textarea', array('required' => false))
+            ->add('metaDescription', 'textarea', array('required' => false))
             ->add('save', 'submit')
-            ;
+        ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => $this->dataClass,
-            'contentType' => 'ckeditor',
+            'contentType' => $this->contentType,
         ));
     }
     
