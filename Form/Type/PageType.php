@@ -4,15 +4,18 @@ namespace Lexxpavlov\PageBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PageType extends AbstractType
 {
     private $contentType;
+    private $dataClass;
 
-    public function __construct($contentType)
+    public function __construct($contentType, $dataClass)
     {
         $this->contentType = $contentType;
+        $this->dataClass = $dataClass;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -31,8 +34,9 @@ class PageType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
+            'data_class' => $this->dataClass,
             'contentType' => $this->contentType,
-        ));
+        ));        
     }
     
     public function getName()
