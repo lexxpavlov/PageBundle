@@ -59,15 +59,17 @@ class PageAdmin extends Admin
     public function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('slug')
-            ->add('title')
-            ->add('content')
-            ->add('published')
-            ->add('publishedAt', 'datetime')
-            ->add('createdAt', 'datetime')
-            ->add('updatedAt', 'datetime')
-            ->add('metaKeywords')
-            ->add('metaDescription')
+            ->with('General')
+                ->add('slug')
+                ->add('title')
+                ->add('content')
+                ->add('published')
+                ->add('publishedAt', 'datetime')
+                ->add('createdAt', 'datetime')
+                ->add('updatedAt', 'datetime')
+                ->add('metaKeywords')
+                ->add('metaDescription')
+            ->end()
         ;
     }
 }
