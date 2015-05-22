@@ -33,10 +33,15 @@ class PageType extends AbstractType
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
+        $this->configureOptions($resolver);
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
         $resolver->setDefaults(array(
             'data_class' => $this->dataClass,
             'contentType' => $this->contentType,
-        ));        
+        ));
     }
     
     public function getName()
